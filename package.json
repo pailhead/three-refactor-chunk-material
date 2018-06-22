@@ -1,0 +1,16 @@
+{
+  "name": "three-refactor-chunk-material",
+  "version": "0.0.1",
+  "description": "three.js flexible material system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "three.js",
+    "shaders",
+    "GLSL"
+  ],
+  "author": "Dusan Bosnjak",
+  "license": "ISC"
+}
