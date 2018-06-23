@@ -79,4 +79,11 @@ export default class ChunkMaterial extends THREE.ShaderMaterial {
             }
         })
     }
+
+    extendUniforms(extendedUniforms){
+         this.uniforms = THREE.UniformsUtils.merge([
+            this.uniforms,
+            extendedUniforms 
+        ])
+    }
 }
