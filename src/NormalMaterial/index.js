@@ -25,7 +25,6 @@ export default class NormalMaterial extends ChunkMaterial {
     constructor(parameters) {
         //declare parameters for this material
         const defaultParameters = {
-            opacity: 1,
             bumpMap: null,
             bumpScale: 1,
             normalMap: null,

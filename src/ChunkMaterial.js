@@ -10,7 +10,7 @@ export default class ChunkMaterial extends THREE.ShaderMaterial {
         uniforms,
         vertexShader,
         fragmentShader,
-        defaultParameters,
+        defaultParameters = {},
         parameters
     }) {
         super({
@@ -19,11 +19,16 @@ export default class ChunkMaterial extends THREE.ShaderMaterial {
             fragmentShader
         })
 
-        this.initParameters(defaultParameters, parameters)
+        Object.defineProperty(this, 'opacity', {
+            get: () => this.uniforms.opacity.value,
+            set: value => (this.uniforms.opacity.value = value)
+        })
 
         this.materialParameters = Object.keys(defaultParameters)
 
-        console.log(this)
+        this.initParameters(defaultParameters, parameters)
+
+        // console.log(this)
 
         //bypass three's compilation system alltogether
         this.onBeforeCompile = shader => {
@@ -37,8 +42,10 @@ export default class ChunkMaterial extends THREE.ShaderMaterial {
 
     //initializes default parameters and hooks up uniforms
     initParameters(defaultParameters, optionalParameters = {}) {
-        console.log('initParameters', defaultParameters, optionalParameters)
         Object.keys(defaultParameters).forEach(paramName => {
+            if (this.materialParameters.indexOf(paramName) === -1) {
+                this.materialParameters.push(paramName)
+            }
             //some parameters have different uniform names
             const uniformName = this.uniforms[
                 SPECIAL_UNIFORM_MAPPING[paramName]
@@ -80,10 +87,10 @@ export default class ChunkMaterial extends THREE.ShaderMaterial {
         })
     }
 
-    extendUniforms(extendedUniforms){
-         this.uniforms = THREE.UniformsUtils.merge([
+    extendUniforms(extendedUniforms) {
+        this.uniforms = THREE.UniformsUtils.merge([
             this.uniforms,
-            extendedUniforms 
+            extendedUniforms
         ])
     }
 }

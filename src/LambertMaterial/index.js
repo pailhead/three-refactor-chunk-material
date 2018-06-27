@@ -33,7 +33,7 @@ import fragmentShader from './template.frag'
  * }
  */
 
-export default class BasicMaterial extends ChunkMaterial {
+export default class LambertMaterial extends ChunkMaterial {
     constructor(parameters) {
         //declare parameters for this material
         const defaultParameters = {

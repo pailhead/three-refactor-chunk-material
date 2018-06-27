@@ -48,7 +48,7 @@ import fragmentShader from './template.frag'
  * }
  */
 
-export default class PhongMaterial extends ChunkMaterial {
+export default class StandardMaterial extends ChunkMaterial {
     constructor(parameters) {
         //declare parameters for this material
         const defaultParameters = {
