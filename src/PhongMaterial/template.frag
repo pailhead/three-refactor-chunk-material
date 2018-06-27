@@ -6,6 +6,7 @@ uniform vec3 specular;
 uniform float shininess;
 uniform float opacity;
 
+
 #include <common>
 #include <packing>
 #include <dithering_pars_fragment>
@@ -29,6 +30,8 @@ uniform float opacity;
 #include <specularmap_pars_fragment>
 #include <logdepthbuf_pars_fragment>
 #include <clipping_planes_pars_fragment>
+
+%-- GLOBAL_FRAGMENT --%
 
 void main() {
 
@@ -62,6 +65,8 @@ void main() {
 	#include <envmap_fragment>
 
 	gl_FragColor = vec4( outgoingLight, diffuseColor.a );
+
+	%-- FINAL_COLOR --%
 
 	#include <tonemapping_fragment>
 	#include <encodings_fragment>

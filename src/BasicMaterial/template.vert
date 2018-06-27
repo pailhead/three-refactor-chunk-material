@@ -9,6 +9,8 @@
 #include <logdepthbuf_pars_vertex>
 #include <clipping_planes_pars_vertex>
 
+%-- GLOBAL_VERTEX --%
+
 void main() {
 
 	#include <uv_vertex>
@@ -16,16 +18,23 @@ void main() {
 	#include <color_vertex>
 	#include <skinbase_vertex>
 
+	#include <begin_vertex>
 	#ifdef USE_ENVMAP
 
-	#include <beginnormal_vertex>
-	#include <morphnormal_vertex>
-	#include <skinnormal_vertex>
-	#include <defaultnormal_vertex>
+		#include <beginnormal_vertex>
 
 	#endif
 
-	#include <begin_vertex>
+	%-- MODEL_TRANSFORM --%
+
+	#ifdef USE_ENVMAP
+
+		#include <morphnormal_vertex>
+		#include <skinnormal_vertex>
+		#include <defaultnormal_vertex>
+
+	#endif
+
 	#include <morphtarget_vertex>
 	#include <skinning_vertex>
 	#include <project_vertex>

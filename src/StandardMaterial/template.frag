@@ -45,6 +45,8 @@ varying vec3 vViewPosition;
 #include <logdepthbuf_pars_fragment>
 #include <clipping_planes_pars_fragment>
 
+%-- GLOBAL_FRAGMENT --%
+
 void main() {
 
 	#include <clipping_planes_fragment>
@@ -64,6 +66,9 @@ void main() {
 	#include <normal_fragment_maps>
 	#include <emissivemap_fragment>
 
+	// gl_FragColor.xyz = normal;
+	// gl_FragColor.w = 1.;
+	// return;
 	// accumulation
 	#include <lights_physical_fragment>
 	#include <lights_fragment_begin>
@@ -73,10 +78,15 @@ void main() {
 	// modulation
 	#include <aomap_fragment>
 
+	// gl_FragColor.xyz = reflectedLight.indirectDiffuse;
+	// gl_FragColor.w = 1.;
+	// return;
 	vec3 outgoingLight = reflectedLight.directDiffuse + reflectedLight.indirectDiffuse + reflectedLight.directSpecular + reflectedLight.indirectSpecular + totalEmissiveRadiance;
 
 	gl_FragColor = vec4( outgoingLight, diffuseColor.a );
 
+	%-- FINAL_COLOR --%
+	
 	#include <tonemapping_fragment>
 	#include <encodings_fragment>
 	#include <fog_fragment>

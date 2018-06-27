@@ -24,3 +24,19 @@ export function parseIncludes(string, optionalChunks = {}) {
 
     return string.replace(pattern, replace)
 }
+
+export function parseHooks(string, hooks = {}) {
+    var pattern = /^[ \t]*%-- +([\w\d.]+) --%/gm
+
+    function replace(match, include) {
+        var replace = hooks[include] || '\n'
+
+        // if (replace === undefined) {
+        //     throw new Error('Can not resolve #include <' + include + '>')
+        // }
+
+        return parseHooks(replace)
+    }
+
+    return string.replace(pattern, replace)
+}

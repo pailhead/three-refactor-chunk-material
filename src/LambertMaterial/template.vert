@@ -22,6 +22,8 @@ varying vec3 vLightFront;
 #include <logdepthbuf_pars_vertex>
 #include <clipping_planes_pars_vertex>
 
+%-- GLOBAL_VERTEX --%
+
 void main() {
 
 	#include <uv_vertex>
@@ -29,12 +31,15 @@ void main() {
 	#include <color_vertex>
 
 	#include <beginnormal_vertex>
+	#include <begin_vertex>
+
+	%-- MODEL_TRANSFORM --%
+	
 	#include <morphnormal_vertex>
 	#include <skinbase_vertex>
 	#include <skinnormal_vertex>
 	#include <defaultnormal_vertex>
 
-	#include <begin_vertex>
 	#include <morphtarget_vertex>
 	#include <skinning_vertex>
 	#include <project_vertex>

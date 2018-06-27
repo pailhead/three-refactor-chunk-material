@@ -17,7 +17,7 @@ export default class PhysicalMaterial extends StandardMaterial {
             clearCoat: { value: 0 },
             clearCoatRoughness: { value: 0 }
         })
-     
+
         //can add from outside too
         this.initParameters(defaultParameters, parameters)
     }

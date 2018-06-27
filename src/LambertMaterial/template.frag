@@ -31,6 +31,8 @@ varying vec3 vLightFront;
 #include <logdepthbuf_pars_fragment>
 #include <clipping_planes_pars_fragment>
 
+%-- GLOBAL_FRAGMENT --%
+
 void main() {
 
 	#include <clipping_planes_fragment>
@@ -74,6 +76,8 @@ void main() {
 	#include <envmap_fragment>
 
 	gl_FragColor = vec4( outgoingLight, diffuseColor.a );
+	
+	%-- FINAL_COLOR --%
 
 	#include <tonemapping_fragment>
 	#include <encodings_fragment>

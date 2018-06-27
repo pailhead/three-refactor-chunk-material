@@ -20,6 +20,8 @@ varying vec3 vViewPosition;
 #include <logdepthbuf_pars_vertex>
 #include <clipping_planes_pars_vertex>
 
+%-- GLOBAL_VERTEX --%
+
 void main() {
 
 	#include <uv_vertex>
@@ -27,6 +29,10 @@ void main() {
 	#include <color_vertex>
 
 	#include <beginnormal_vertex>
+	#include <begin_vertex>
+
+	%-- MODEL_TRANSFORM --%
+	
 	#include <morphnormal_vertex>
 	#include <skinbase_vertex>
 	#include <skinnormal_vertex>
@@ -38,7 +44,6 @@ void main() {
 
 #endif
 
-	#include <begin_vertex>
 	#include <morphtarget_vertex>
 	#include <skinning_vertex>
 	#include <displacementmap_vertex>

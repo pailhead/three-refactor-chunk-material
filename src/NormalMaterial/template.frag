@@ -20,6 +20,8 @@ uniform float opacity;
 #include <normalmap_pars_fragment>
 #include <logdepthbuf_pars_fragment>
 
+%-- GLOBAL_FRAGMENT --%
+
 void main() {
 
 	#include <logdepthbuf_fragment>
@@ -27,5 +29,7 @@ void main() {
 	#include <normal_fragment_maps>
 
 	gl_FragColor = vec4( packNormalToRGB( normal ), opacity );
+	
+	%-- FINAL_COLOR --%
 
 }

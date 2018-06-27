@@ -1,4 +1,4 @@
-import { parseIncludes } from './utils'
+import { parseIncludes, parseHooks } from './utils'
 
 //some parameters have different uniform names
 const SPECIAL_UNIFORM_MAPPING = {
@@ -32,10 +32,11 @@ export default class ChunkMaterial extends THREE.ShaderMaterial {
 
         //bypass three's compilation system alltogether
         this.onBeforeCompile = shader => {
-            shader.vertexShader = parseIncludes(vertexShader, this.shaderChunks)
-            shader.fragmentShader = parseIncludes(
-                fragmentShader,
-                this.shaderChunks
+            shader.vertexShader = parseHooks(
+                parseIncludes(vertexShader, this.shaderChunks)
+            )
+            shader.fragmentShader = parseHooks(
+                parseIncludes(fragmentShader, this.shaderChunks)
             )
         }
     }
