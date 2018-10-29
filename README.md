@@ -13,8 +13,9 @@ Three.js has "built-in" materials. These usually represent:
 Out of the box they do their respective jobs, and have a high level interface:
 
 ```javascript
-someMaterial.someMap = new Texture()
+someMaterial.someMap = new Texture() //change the appearance of a material
 someMaterial.someNumber = 5
+someMaterial.receiveShadow = true //make it work with the rest of the system
 ```
 
 Under the hood, three.js has a system that manages how GLSL is assembled. Three.js extends the GLSL syntax and is able to inject little snippets of code into a shader template. A shader template is some version of this:
