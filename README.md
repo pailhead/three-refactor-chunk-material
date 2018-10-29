@@ -26,7 +26,7 @@ void main(){
 }
 ```
 
-When three encounters a template with `#include <some_chunk>` statements, it looks up a global dictionary `THREE.ShaderChunk` for the snipet, and replaces the statement with the shader string:
+When three encounters a template with `#include <some_chunk>` statements, it looks up a global dictionary `THREE.ShaderChunk` for the snippet, and replaces the statement with the shader string:
 
 ```glsl
 #include <some_pars> //not glsl
