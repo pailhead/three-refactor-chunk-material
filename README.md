@@ -31,9 +31,12 @@ When three encounters a template with `#include <some_chunk>` statements, it loo
 #include <some_pars> //not glsl
 
 void main() { //GLSL
+
+        vec4 computationResult; //GLSL - a variable specific to the template, not the chunks
+	
 	#include <some_computation> //not GLSL (three replaces this with GLSL)
 
-	gl_Position = computationResult; //GLSL and specific variable name to the material template
+	gl_Position = computationResult; //GLSL
 }
 ```
 
@@ -73,4 +76,6 @@ Theoretically `THREE.WebGLRenderer` could be made smaller by removing references
 - the most optimal strategy for building / tree shaking this should be found
 - the idea is to be able to refactor the structure of the tamplates and chunks, this will lead to duplicated code
 - some optimizations may be lost in the process of moving these out of the core
+- tree shaking, i'm having trouble identifying the problem with the chunks, whats the best outcome with static analysis and would even fetching these remotely make sense
+
 
